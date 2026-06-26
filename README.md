@@ -119,6 +119,15 @@ The browser UI is usually the easier entrypoint:
 tradingagents-web
 ```
 
+For non-interactive local automation, use:
+
+```bash
+tradingagents-run AAPL --provider codex_cli --depth 5
+```
+
+The headless runner prints a JSON payload and uses the same local CLI provider
+configuration as the browser UI.
+
 ## Development
 
 Install development dependencies:

@@ -3,7 +3,7 @@ const state = {
   runId: null,
   runStatus: null,
   pollTimer: null,
-  selectedDepth: 1,
+  selectedDepth: 5,
   selectedProvider: "codex_cli",
 };
 

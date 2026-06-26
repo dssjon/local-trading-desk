@@ -52,6 +52,7 @@ web = [
 [project.scripts]
 tradingagents = "cli.main:app"
 tradingagents-web = "tradingagents.web.app:main"
+tradingagents-run = "tradingagents.web.headless:main"
 
 [tool.setuptools.packages.find]
 include = ["tradingagents*", "cli*"]

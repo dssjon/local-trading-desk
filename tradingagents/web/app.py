@@ -126,8 +126,8 @@ class RunRequest(BaseModel):
     ticker: str = Field(min_length=1, max_length=32)
     analysis_date: str
     analysts: list[str] = Field(default_factory=lambda: ["market", "social", "news", "fundamentals"])
-    research_depth: int = 1
-    llm_provider: str | None = None
+    research_depth: int = 5
+    llm_provider: str | None = "codex_cli"
     quick_model: str | None = None
     deep_model: str | None = None
     asset_type: str = "stock"
