@@ -12,6 +12,32 @@ _CUSTOM_ONLY: dict[str, list[ModelOption]] = {
     "deep": [("Custom model ID", "custom")],
 }
 
+_CODEX_CLI_MODELS: dict[str, list[ModelOption]] = {
+    "quick": [
+        ("GPT-5.5 via Codex CLI - Local subscription auth", "gpt-5.5"),
+        ("GPT-5.4 Mini via Codex CLI - Faster local subscription auth", "gpt-5.4-mini"),
+        ("Custom model ID", "custom"),
+    ],
+    "deep": [
+        ("GPT-5.5 via Codex CLI - Local subscription auth", "gpt-5.5"),
+        ("GPT-5.5 Pro via Codex CLI - Highest capability if available", "gpt-5.5-pro"),
+        ("Custom model ID", "custom"),
+    ],
+}
+
+_CLAUDE_CLI_MODELS: dict[str, list[ModelOption]] = {
+    "quick": [
+        ("Claude Sonnet 4.6 via Claude CLI - Fast local subscription auth", "claude-sonnet-4-6"),
+        ("Claude Opus 4.8 via Claude CLI - Highest quality local subscription auth", "claude-opus-4-8"),
+        ("Custom model ID", "custom"),
+    ],
+    "deep": [
+        ("Claude Opus 4.8 via Claude CLI - Highest quality local subscription auth", "claude-opus-4-8"),
+        ("Claude Sonnet 4.6 via Claude CLI - Faster local subscription auth", "claude-sonnet-4-6"),
+        ("Custom model ID", "custom"),
+    ],
+}
+
 
 # Shared model list for GLM via Z.AI (international) and BigModel (China).
 # Source: docs.z.ai (GLM Coding Plan supported models + LLM guides).
@@ -104,6 +130,8 @@ MODEL_OPTIONS: ProviderModeOptions = {
             ("Claude Sonnet 4.6 - Best speed and intelligence balance", "claude-sonnet-4-6"),
         ],
     },
+    "codex_cli": _CODEX_CLI_MODELS,
+    "claude_cli": _CLAUDE_CLI_MODELS,
     "google": {
         "quick": [
             ("Gemini 3.5 Flash - Latest, frontier agentic + coding (GA)", "gemini-3.5-flash"),

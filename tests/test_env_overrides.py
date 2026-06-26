@@ -75,10 +75,12 @@ def test_reasoning_thinking_overrides(monkeypatch):
         TRADINGAGENTS_OPENAI_REASONING_EFFORT="high",
         TRADINGAGENTS_GOOGLE_THINKING_LEVEL="minimal",
         TRADINGAGENTS_ANTHROPIC_EFFORT="low",
+        TRADINGAGENTS_LOCAL_CLI_EFFORT="xhigh",
     )
     assert dc.DEFAULT_CONFIG["openai_reasoning_effort"] == "high"
     assert dc.DEFAULT_CONFIG["google_thinking_level"] == "minimal"
     assert dc.DEFAULT_CONFIG["anthropic_effort"] == "low"
+    assert dc.DEFAULT_CONFIG["local_cli_effort"] == "xhigh"
 
 
 def test_reasoning_effort_defaults_to_none(monkeypatch):
@@ -87,6 +89,7 @@ def test_reasoning_effort_defaults_to_none(monkeypatch):
     assert dc.DEFAULT_CONFIG["openai_reasoning_effort"] is None
     assert dc.DEFAULT_CONFIG["google_thinking_level"] is None
     assert dc.DEFAULT_CONFIG["anthropic_effort"] is None
+    assert dc.DEFAULT_CONFIG["local_cli_effort"] is None
 
 
 def test_empty_env_value_is_passthrough(monkeypatch):

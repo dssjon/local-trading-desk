@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Local Trading Desk</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23252726'/%3E%3Cpath d='M14 37l10-10 8 8 18-20' fill='none' stroke='%2338e8ad' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='14' cy='37' r='4' fill='%23f1f4f1'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand" aria-label="Local Trading Desk">
+        <span class="brand-mark">⌁</span>
+        <span class="brand-name">Local Trading Desk</span>
+      </div>
+      <button class="sign-in" type="button" title="Local UI uses your .env and CLI auth">Setup</button>
+    </header>
+
+    <main id="workspace" class="workspace">
+      <aside class="left-rail">
+        <section class="progress-card">
+          <div class="eyebrow">Progress</div>
+          <div id="progress-title" class="run-title">Ready</div>
+          <div id="duration" class="duration">No active run</div>
+        </section>
+
+        <section class="agent-group">
+          <button class="group-title" type="button">Analyst Agents <span>⌄</span></button>
+          <div id="analyst-agents" class="agent-list"></div>
+        </section>
+        <section class="agent-group">
+          <button class="group-title" type="button">Research Agents <span>⌄</span></button>
+          <div id="research-agents" class="agent-list"></div>
+        </section>
+        <section class="agent-group">
+          <button class="group-title" type="button">Trading Desk <span>⌄</span></button>
+          <div id="trader-agents" class="agent-list"></div>
+        </section>
+        <section class="agent-group">
+          <button class="group-title" type="button">Risk Management Agents <span>⌄</span></button>
+          <div id="risk-agents" class="agent-list"></div>
+        </section>
+        <section class="agent-group">
+          <button class="group-title" type="button">Final Verdict <span>⌄</span></button>
+          <div id="portfolio-agents" class="agent-list"></div>
+        </section>
+
+        <div class="local-note">
+          Local browser workspace. Runs are stored under your configured
+          results directory.
+        </div>
+      </aside>
+
+      <section class="center-stage">
+        <section class="run-launch panel">
+          <form id="ticker-form" class="run-form">
+            <label for="ticker-input">
+              Target Equity
+              <input id="ticker-input" name="ticker" autocomplete="off" spellcheck="false" placeholder="Enter a ticker (AAPL, MSFT, BTC-USD...)" />
+            </label>
+            <button type="submit">Start Analysis</button>
+          </form>
+        </section>
+
+        <div id="stage-status" class="stage-status">
+          <span class="spinner"></span>
+          <span>configure analysis</span>
+        </div>
+
+        <section id="config-summary" class="panel"></section>
+        <section class="panel">
+          <h2>Agent Pipeline</h2>
+          <div id="pipeline" class="pipeline"></div>
+        </section>
+
+        <article id="report-view" class="report-view hidden"></article>
+      </section>
+
+      <aside class="right-rail">
+        <section class="side-section">
+          <h2>Analysis Configuration <span class="lock">▱</span></h2>
+          <button id="new-run" class="outline-button" type="button">New Analysis</button>
+          <button id="stop-run" class="outline-button danger-button" type="button" disabled>Stop Run</button>
+          <label>
+            Analysis Date
+            <input id="analysis-date" type="date" />
+          </label>
+          <div>
+            <span class="label">Analyst Team</span>
+            <div class="toggle-grid">
+              <button class="toggle active" data-analyst="market" type="button">Market</button>
+              <button class="toggle active" data-analyst="social" type="button">Social</button>
+              <button class="toggle active" data-analyst="news" type="button">News</button>
+              <button class="toggle active" data-analyst="fundamentals" type="button">Fundamentals</button>
+            </div>
+          </div>
+          <div>
+            <span class="label">LLM Provider</span>
+            <div class="segmented provider-segment two-up">
+              <button class="active" data-provider="codex_cli" type="button">Codex CLI</button>
+              <button data-provider="claude_cli" type="button">Claude CLI</button>
+            </div>
+          </div>
+          <div>
+            <span class="label">Research Depth</span>
+            <div class="segmented depth-segment">
+              <button class="active" data-depth="1" type="button">Shallow</button>
+              <button data-depth="3" type="button">Medium</button>
+              <button data-depth="5" type="button">Deep</button>
+            </div>
+          </div>
+          <label>
+            Quick Thinking
+            <input id="quick-model" type="text" />
+          </label>
+          <label>
+            Deep Thinking
+            <input id="deep-model" type="text" />
+          </label>
+        </section>
+
+        <section class="side-section activity-section">
+          <h2>Messages &amp; Tools</h2>
+          <div id="stats" class="stats">0 LLM calls · 0 tool calls</div>
+          <div id="activity-log" class="activity-log"></div>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <span>Local research workspace</span>
+      <span>Optimized for Codex and Claude CLI subscriptions</span>
+      <span class="badge">Local Web UI</span>
+    </footer>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

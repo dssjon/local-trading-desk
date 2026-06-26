@@ -78,3 +78,21 @@ class TestProviderKwargsTemperature:
 
     def test_empty_string_omitted(self):
         assert "temperature" not in self._kwargs_for("")
+
+
+@pytest.mark.unit
+class TestProviderKwargsLocalCliEffort:
+    """Local CLI providers receive their effort through the app-level config key."""
+
+    def _kwargs_for(self, provider, effort):
+        from tradingagents.graph.trading_graph import TradingAgentsGraph
+        graph = TradingAgentsGraph.__new__(TradingAgentsGraph)
+        graph.config = {"llm_provider": provider, "local_cli_effort": effort}
+        return TradingAgentsGraph._get_provider_kwargs(graph)
+
+    @pytest.mark.parametrize("provider", ["codex_cli", "claude_cli"])
+    def test_local_cli_effort_forwarded(self, provider):
+        assert self._kwargs_for(provider, "xhigh")["effort"] == "xhigh"
+
+    def test_missing_local_cli_effort_omitted(self):
+        assert "effort" not in self._kwargs_for("codex_cli", None)

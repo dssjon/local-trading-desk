@@ -18,6 +18,9 @@ PROVIDER_API_KEY_ENV: dict[str, str | None] = {
     "azure":      "AZURE_OPENAI_API_KEY",
     # Bedrock authenticates via the AWS credential chain, not a single key env.
     "bedrock":    None,
+    # Local CLI providers authenticate through the user's logged-in CLI session.
+    "codex_cli":  None,
+    "claude_cli": None,
     "xai":        "XAI_API_KEY",
     "deepseek":   "DEEPSEEK_API_KEY",
     # Dual-region providers each carry their own account; keys are not
