@@ -60,6 +60,7 @@ Edit `.env` and set the local CLI provider:
 TRADINGAGENTS_LLM_PROVIDER=codex_cli
 TRADINGAGENTS_DEEP_THINK_LLM=gpt-5.5
 TRADINGAGENTS_QUICK_THINK_LLM=gpt-5.5
+TRADINGAGENTS_WEB_HOST=127.0.0.1
 TRADINGAGENTS_WEB_PORT=8501
 ```
 
@@ -74,6 +75,10 @@ Open:
 ```text
 http://127.0.0.1:8501/
 ```
+
+To access the UI from another device on your Tailscale network, run the web
+server with `TRADINGAGENTS_WEB_HOST=0.0.0.0`, then open
+`http://<tailscale-ip>:8501/` from another Tailscale-connected device.
 
 The first screen is the working dashboard. Set the analysis date, analyst team,
 LLM provider, and research depth before entering a ticker and pressing
